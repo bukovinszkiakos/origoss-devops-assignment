@@ -11,3 +11,13 @@ vendor/
 
 # OS
 .DS_Store
+
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+crash.log
+
+# Terraform variable secrets
+*.tfvars
+!terraform.tfvars.example

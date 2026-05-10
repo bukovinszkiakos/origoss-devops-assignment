@@ -15,6 +15,6 @@ COPY --from=builder /app/server .
 
 EXPOSE 3000
 
-USER nobody
+USER 65534
 
 CMD ["./server"]
