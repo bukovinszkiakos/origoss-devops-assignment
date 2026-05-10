@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: origoss-app
+  namespace: origoss
+
+  labels:
+    app: origoss-app
+
+spec:
+  replicas: 2
+
+  strategy:
+    type: RollingUpdate
+
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+
+  selector:
+    matchLabels:
+      app: origoss-app
+
+  template:
+    metadata:
+      labels:
+        app: origoss-app
+
+    spec:
+      securityContext:
+        runAsNonRoot: true
+
+      containers:
+        - name: origoss-container
+
+          image: ghcr.io/bukovinszkiakos/origoss-devops-assignment:latest
+
+          imagePullPolicy: Always
+
+          ports:
+            - containerPort: 3000
+
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "100m"
+
+            limits:
+              memory: "128Mi"
+              cpu: "250m"
+
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+
+            initialDelaySeconds: 20
+            periodSeconds: 20
+            failureThreshold: 3
