@@ -248,10 +248,6 @@ Successful deployment verification using kubectl:
 
 <img width="822" height="262" alt="image_1" src="https://github.com/user-attachments/assets/e9a52200-83b1-42ac-91e2-72c988636a83" />
 
-Successful Terraform infrastructure cleanup:
-
-<img width="728" height="369" alt="image_2" src="https://github.com/user-attachments/assets/3e43292b-fbcf-444f-876d-3dd73ddb731f" />
-
 ---
 
 # Notes
